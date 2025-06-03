@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const products = [
+      { id: 1, name: "Puma Shoe", price: "$50", image: "https://i.pinimg.com/736x/74/98/9f/74989ffede32b743a42248793b745b3b.jpg" },
+      { id: 2, name: "Miu Miu Top", price: "$30", image: "https://i.pinimg.com/736x/29/32/13/29321333f23bac06b5bc38d904783e8e.jpg" },
+      { id: 3, name: "Miu Miu Bag", price: "$100", image: "https://i.pinimg.com/736x/f8/3b/1e/f83b1ed945c92ec04c58e981edf28037.jpg" },
+      { id: 4, name: "Leopard print Glasses", price: "$30", image: "https://i.pinimg.com/736x/f4/02/2f/f4022fec24e3446b0339cd17fda732fa.jpg" },
+      { id: 5, name: "Ruffle white Dress", price: "$50", image: "https://i.pinimg.com/736x/b6/26/bd/b626bd557a6b789c162299f6728594b3.jpg" },
+      { id: 6, name: "blue butterfly sweater", price: "$10", image: "https://i.pinimg.com/736x/35/1f/16/351f16a3e587081740c33d9661b9cc4b.jpg" },
+      { id: 7, name: "Cotton & Linen Bow Decor Split Midi Skirt", price: "$20", image: "https://i.pinimg.com/736x/74/e4/2b/74e42b470ebbc89c04004f19e4a290e9.jpg" },
+      { id: 8, name: "Y2K Butterfly Flare Jeans", price: "$20", image: "https://i.pinimg.com/736x/96/7f/75/967f759dad942639e6efb5ff13f9260b.jpg" },
+      { id: 9, name: "denim bow cap", price: "$9", image: "https://i.pinimg.com/736x/a6/f3/76/a6f376f606ba9734548740654507ccf6.jpg" },
+      { id: 10, name: "Silver Metal Watch", price: "$130", image: "https://i.pinimg.com/736x/3d/03/1f/3d031f95d45aa525300db4d491148300.jpg" },
+      { id: 11, name: "Linen white Top", price: "$30", image: "https://i.pinimg.com/736x/50/d4/ed/50d4edacebcb454f783d40467e73bd7c.jpg" },
+      { id: 12, name: "Blue ruffle dress", price: "$70", image: "https://i.pinimg.com/736x/59/e2/3b/59e23bf1f631cbd381c21cc889a1c53b.jpg" },
+      
+
+    ];
+
+    window.onload = () => {
+  const list = document.getElementById("product-list");
+
+  products.forEach(p => {
+    const item = document.createElement("div")
+    item.className = "w-48 border p-4 rounded shadow bg-sky-100 mt-10";  
+
+    item.innerHTML = `
+      <img src="${p.image}" class="w-full h-40 object-cover mb-4" />
+      <h3 class="text-lg font-bold">${p.name}</h3>
+      <p>${p.price}</p>
+      <a href="product.html?id=${p.id}" class="text-black-500 underline">View Details</a>
+    `;
+
+    list.appendChild(item);
+  });
+}
+
+  </script>
+</head>
+<body class="p-6 bg-[url('https://i.pinimg.com/736x/68/00/89/680089deb1bc675c9d88d1f75d5d4f54.jpg')] bg-cover bg-center">
+  <h1 class="text-2xl font-bold mb-4 text-center">Products</h1>
+  <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"></div>
+</body>
+</html>

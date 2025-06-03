@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Detail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const products = [
+      { id: 1, name: "Puma Shoes", price: "$50", image: "https://i.pinimg.com/736x/74/98/9f/74989ffede32b743a42248793b745b3b.jpg", description: "Introducing the stylish and versatile black Puma shoes with signature white stripes.These shoes reflect Puma’s legacy of combining performance with modern design.The black upper gives a sleek, timeless look that fits any outfit.White stripes on the sides add bold contrast and brand recognition.Made from high-quality synthetic materials for enhanced durability.Lightweight construction ensures ease of movement throughout the day.The cushioned insole offers superior comfort with every step." },
+      { id: 2, name: "Miu Miu Top", price: "$30", image: "https://i.pinimg.com/736x/29/32/13/29321333f23bac06b5bc38d904783e8e.jpg", description: "This chic Miu Miu top blends comfort with style effortlessly.Made from soft, breathable fabric for all-day wear.Features a flattering cut that suits various occasions.Ideal for pairing with jeans, skirts, or tailored pants.Subtle design details elevate your everyday look.Lightweight material keeps you comfortable in warmer weather.Perfect for casual outings or dressier events.Timeless piece that fits well into any wardrobe.Easy to dress up or down with accessories.A must-have top for fashion-forward individuals." },
+      { id: 3, name: "Miu Miu Bag", price: "$100", image: "https://i.pinimg.com/736x/f8/3b/1e/f83b1ed945c92ec04c58e981edf28037.jpg", description: "The Miu Miu bag is a sophisticated accessory with timeless appeal.Crafted from premium materials for durability and style.Spacious enough to carry your essentials securely.Features elegant hardware details for added charm.Perfect for day-to-night transitions.Lightweight and easy to carry all day.Complements both casual and formal outfits.Classic design that never goes out of style.Adds a luxurious touch to any look.An essential bag for fashion lovers." },
+      { id: 4, name: "Leopard print glasses", price: "$30", image: "https://i.pinimg.com/736x/f4/02/2f/f4022fec24e3446b0339cd17fda732fa.jpg", description: "Make a bold statement with these trendy leopard print glasses.Lightweight frames ensure comfortable all-day wear.UV-protected lenses shield your eyes from harmful rays.Perfect for adding a touch of wild style to your outfit.Classic shape suits most face types.Durable construction for everyday use.Pairs well with casual and chic styles.Enhances your look with a fashionable edge.Ideal for sun protection with style.A must-have accessory for bold fashion lovers." },
+      { id: 5, name: "Ruffle white Dress", price: "$50", image: "https://i.pinimg.com/736x/b6/26/bd/b626bd557a6b789c162299f6728594b3.jpg", description: "This elegant white dress features delicate ruffle details.Made from lightweight fabric that flows beautifully.Feminine and flattering silhouette enhances your shape.Perfect for summer parties, brunches, or casual events.Soft material keeps you comfortable all day.Versatile style that pairs well with sandals or heels.Timeless white color adds freshness to your wardrobe.Easy to dress up or down with accessories.Ideal for warm weather and outdoor occasions.A classic dress with a romantic touch." },
+      { id: 6, name: "Blue butterfly sweater", price: "$10", image: "https://i.pinimg.com/736x/35/1f/16/351f16a3e587081740c33d9661b9cc4b.jpg", description: "Stay cozy and stylish with this blue butterfly sweater.Soft knit fabric provides warmth and comfort.Beautiful butterfly embroidery adds a playful touch.Casual design perfect for everyday wear.Pairs effortlessly with jeans, skirts, or shorts.Lightweight enough for layering during cooler days.Bright blue color adds a pop of fun to your outfit.Ideal for casual outings or relaxed weekends.Easy to care for and durable knit material.A charming addition to your sweater collection." },
+      { id: 7, name: "Cotton & Linen Bow Decor Split Midi Skirt", price: "$20", image: "https://i.pinimg.com/736x/74/e4/2b/74e42b470ebbc89c04004f19e4a290e9.jpg", description: "This cotton and linen blend midi skirt is perfect for warm days.Features a stylish front split for easy movement.Elegant bow decor adds a feminine detail.Breathable fabric keeps you cool and comfortable.Flattering midi length suits many body types.Versatile piece for casual or semi-formal wear.Pairs well with fitted tops or blouses.Lightweight and easy to style with accessories.Perfect for spring and summer outfits.A chic and comfortable wardrobe essential." },
+      { id: 8, name: "Y2K Butterfly Flare Jeans", price: "$20", image: "https://i.pinimg.com/736x/96/7f/75/967f759dad942639e6efb5ff13f9260b.jpg", description: "DChannel retro vibes with these Y2K-inspired butterfly flare jeans.Soft denim with a flattering flare silhouette.Detailed butterfly embroidery adds a unique touch.Comfortable fit suitable for everyday wear.Pairs perfectly with crop tops or oversized sweaters.Durable fabric for long-lasting use.Ideal for vintage and street-style looks.Adds fun and personality to your outfit.Great for casual hangouts or festivals.A statement piece for trendsetters." },
+      { id: 9, name: "Denim Bow Cap", price: "$9", image: "https://i.pinimg.com/736x/a6/f3/76/a6f376f606ba9734548740654507ccf6.jpg", description: "This denim cap features a playful bow accent for added charm.Made from durable denim fabric for everyday use.Adjustable strap ensures a comfortable fit.Adds a casual, stylish touch to any outfit.Perfect for sunny days or outdoor activities.Lightweight and breathable for all-day wear.Pairs well with casual and sporty looks.Easy to clean and maintain.A cute accessory to complete your outfit.Ideal for adding personality to your headwear." },
+      { id: 10, name: "Silver Metal Watch", price: "$130", image: "https://i.pinimg.com/736x/3d/03/1f/3d031f95d45aa525300db4d491148300.jpg", description: "This silver metal watch boasts a sleek, minimalist design.Durable and scratch-resistant glass protects the face.Adjustable metal band fits comfortably on any wrist.Classic style complements both casual and formal wear.Reliable quartz movement keeps accurate time.Lightweight design for all-day comfort.Polished finish adds elegance to any look.Perfect accessory for everyday or special occasions.Water-resistant for added durability.A timeless piece to elevate your style." },
+      { id: 11, name: "Linen White Top", price: "$30", image: "https://i.pinimg.com/736x/50/d4/ed/50d4edacebcb454f783d40467e73bd7c.jpg", description: "Stay cool and stylish with this breathable linen white top.Lightweight fabric is perfect for warm weather.Simple yet elegant design for versatile wear.Pairs easily with jeans, skirts, or shorts.Ideal for casual outings or workwear.Soft material feels gentle against the skin.Timeless white color matches any outfit.Relaxed fit offers comfort without sacrificing style.Easy to layer with jackets or cardigans.A wardrobe essential for effortless style." },
+      { id: 12, name: "Blue Ruffle Dress", price: "$70", image: "https://i.pinimg.com/736x/59/e2/3b/59e23bf1f631cbd381c21cc889a1c53b.jpg", description: "This stunning blue dress features soft ruffle accents.Made from lightweight, flowing fabric for comfort.Flattering silhouette enhances your natural shape.Perfect choice for parties, dates, or special occasions.Rich blue color adds vibrancy to your wardrobe.Pairs beautifully with heels or flats.Elegant yet easy to wear and style.Soft fabric feels comfortable all day.A feminine dress with a modern touch.Ideal for making a statement wherever you go.." },
+    ];
+
+    window.onload = () => {
+      if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "index.html";
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id"));
+      const product = products.find(p => p.id === id);
+
+      if (!product) {
+        document.body.innerHTML = "<p class='text-center p-4'>Product not found.</p>";
+        return;
+      }
+
+      document.getElementById("name").textContent = product.name;
+      document.getElementById("image").src = product.image;
+      document.getElementById("price").textContent = product.price;
+      document.getElementById("desc").textContent = product.description;
+
+      // Logout button event
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "index.html";
+      });
+    };
+  </script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="bg-white p-6 rounded shadow max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+    <div class="w-full md:w-1/2">
+      <div class="overflow-hidden rounded">
+        <img id="image" class="w-full h-auto transform transition-transform duration-300 hover:scale-110" />
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 flex flex-col">
+      <h1 id="name" class="text-3xl font-bold mb-2"></h1>
+      <p id="price" class="text-xl text-gray-700 mb-2"></p>
+      <p id="desc" class="text-gray-600 mb-4"></p>
+      <a href="products.html" class="text-black underline mb-auto">← Back to products</a>
+    </div>
+  </div>
+
+  <button id="logoutBtn" class="fixed bottom-6 right-6 px-4 py-2 mr-20 bg-black text-white rounded hover:bg-gray-800 transition shadow-lg">
+    Logout
+  </button>
+</body>
+</html>

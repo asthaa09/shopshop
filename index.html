@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "Astha" && pass === "Astha@12") {
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "products.html";
+      } else {
+        alert("Invalid credentials");
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+  <form onsubmit="login(event)" class="bg-white p-8 rounded shadow w-80">
+    <h2 class="text-xl font-bold mb-4">Login</h2>
+    <input id="username" placeholder="Username" class="w-full p-2 mb-2 bg-gray-200 border rounded" />
+    <input id="password" type="password" placeholder="Password" class="w-full p-2 mb-4 bg-gray-200 border rounded" />
+    <button type="submit" class="w-full bg-black text-white py-2 rounded font-bold">Login</button>
+  </form>
+</body>
+</html>
